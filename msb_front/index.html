@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- STYLE -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- SCRIPT -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <script>
+        /* 
+        let selectJeux, selectJoueurs, form;
+        let UrlApi = "http://localhost:7777";
+        window.addEventListener("load", () => {
+            selectJeux = document.querySelector("#game_id");
+            selectJoueurs = document.querySelector("#winner_id");
+            form = document.querySelector("form");
+            form.addEventListener("submit", () => {
+                fetch(UrlApi + "/contest", {
+                    method: "POST",
+                    body: new FormData(form)
+                })
+                .then(responseHTTP)
+                .then(partie => {
+                    let msg="<div class='alert alert-";
+                    if(partie){
+                        msg += "success'> Partie enregistrée";
+                    } else {
+                        msg += "danger'> Erreur : Partie non enregistrée";
+                    }
+                    msg += "</div>";
+                    document.querySelector("#message").innerHTML = msg;
+                    setTimeout( () => {
+                        document.querySelector("#message").innerHTML = "";
+                    }, 3000);
+                })
+                .finally( () => { form.reset(); })
+            });
+
+            //Remplir le select avec les jeux et les joueurs 
+            fetch(UrlApi + "/games", {method: "GET"})
+            .then(responseHTTP => console.log(responseHTTP.json))
+            .then(jeux => {
+                for(const jeu of jeux){
+                    let option = document.createElement("option");
+                    option.value=jeu.id;
+                    option.innerHTML=jeu.title;
+                    selectJeux.add(option);
+                }
+            })
+            fetch(UrlApi + "/players", {method: "GET"})
+            .then(responseHTTP => responseHTTP.json)
+            .then(joueurs => {
+                for(const joueur of joueurs){
+                    let option = document.createElement("option");
+                    option.value=joueur.id;
+                    option.innerHTML=joueur.title;
+                    selectJoueurs.add(option);
+                }
+            })
+        })
+        */
+    </script>
+    <div class="container">
+        <h1  class="text-center">Confirmer la suppression du livre ? </h1>
+        <h1  class="text-center">Formulaire livre</h1>
+        <div id="message"></div>
+        <form method="POST" action="http://localhost:7777/contest">
+            <div class="form-group">
+                <label for="start_date">Date</label>
+                <input  type="date" name="start_date" id="start_date" class="form-control">
+            </div>
+            <div class="form-group d-flex flex-column">
+                <label for="game_id">Game</label>
+                <select name="game_id" id="game_id">
+                    <option value=""></option>
+                </select>
+            </div>
+            <div class="form-group d-flex flex-column">
+                <label for="winner_id">Winner</label>
+                <select name="winner_id" id="winner_id">
+                    <option value=""></option>
+                </select>
+            </div>
+            <div class="d-flex mt-3 justify-content-between">    
+                <button  class="btn btn-primary">
+                    <i class="fa fa-save"></i>
+                    Enregistrer
+                </button>
+            </div>
+        </form>
+        <script src="script/main.js"></script>
+    </div>
+</body>
+</html>
